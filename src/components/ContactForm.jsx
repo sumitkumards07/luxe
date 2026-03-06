@@ -119,6 +119,13 @@ const logoSrc = [
 
 export default function ContactForm() {
     const [ref, visible] = useFadeIn();
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const handleSubmit = () => {
+        setIsSubmitted(true);
+        // Reset after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000);
+    };
 
     return (
         <>
@@ -159,64 +166,75 @@ export default function ContactForm() {
                         </div>
 
                         {/* Glassmorphism Form Card */}
-                        <div className="glass-light rounded-3xl p-6 sm:p-10 md:p-14 shadow-xl shadow-slate-200/50">
-                            <form className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                                <div>
-                                    <label className="block text-[10px] uppercase tracking-[0.2em] text-[#d4af35] font-bold mb-2">Full Name</label>
-                                    <input
-                                        className="w-full bg-white/60 border border-slate-200 rounded-xl py-3 sm:py-4 px-4 text-slate-900 placeholder:text-slate-400 font-light text-sm sm:text-base focus:ring-2 focus:ring-[#d4af35]/20 focus:border-[#d4af35] transition-all"
-                                        placeholder="E.g. Rohan Malhotra"
-                                        type="text"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-[10px] uppercase tracking-[0.2em] text-[#d4af35] font-bold mb-2">Email Address</label>
-                                    <input
-                                        className="w-full bg-white/60 border border-slate-200 rounded-xl py-3 sm:py-4 px-4 text-slate-900 placeholder:text-slate-400 font-light text-sm sm:text-base focus:ring-2 focus:ring-[#d4af35]/20 focus:border-[#d4af35] transition-all"
-                                        placeholder="rohan@private.in"
-                                        type="email"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-[10px] uppercase tracking-[0.2em] text-[#d4af35] font-bold mb-2">Phone</label>
-                                    <input
-                                        className="w-full bg-white/60 border border-slate-200 rounded-xl py-3 sm:py-4 px-4 text-slate-900 placeholder:text-slate-400 font-light text-sm sm:text-base focus:ring-2 focus:ring-[#d4af35]/20 focus:border-[#d4af35] transition-all"
-                                        placeholder="+91 99887 76655"
-                                        type="tel"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-[10px] uppercase tracking-[0.2em] text-[#d4af35] font-bold mb-2">Interest</label>
-                                    <select className="w-full bg-white/60 border border-slate-200 rounded-xl py-3 sm:py-4 px-4 text-slate-500 font-light text-sm sm:text-base focus:ring-2 focus:ring-[#d4af35]/20 focus:border-[#d4af35] transition-all">
-                                        <option>Select a property</option>
-                                        <option>The Altamount Sky Villa (Mumbai)</option>
-                                        <option>The Udaipur Vista (Lake Pichola)</option>
-                                        <option>The Alibaug Sanctuary</option>
-                                        <option>Worli Sea-Link Sanctuary</option>
-                                        <option>Other / General Inquiry</option>
-                                    </select>
-                                </div>
-                                <div className="md:col-span-2">
-                                    <label className="block text-[10px] uppercase tracking-[0.2em] text-[#d4af35] font-bold mb-2">Message</label>
-                                    <textarea
-                                        className="w-full bg-white/60 border border-slate-200 rounded-xl py-3 sm:py-4 px-4 text-slate-900 placeholder:text-slate-400 font-light text-sm sm:text-base focus:ring-2 focus:ring-[#d4af35]/20 focus:border-[#d4af35] transition-all resize-none"
-                                        placeholder="Describe your dream residence in India..."
-                                        rows="3"
-                                    />
-                                </div>
-                                <div className="md:col-span-2 flex flex-col sm:flex-row items-center justify-between gap-6 pt-2">
-                                    <div className="flex items-center gap-3">
-                                        <span className="material-symbols-outlined text-[#d4af35]">verified_user</span>
-                                        <span className="text-xs text-slate-400 font-light">Discreet & confidential handling guaranteed.</span>
+                        <div className="glass-light rounded-3xl p-6 sm:p-10 md:p-14 shadow-xl shadow-slate-200/50 relative overflow-hidden">
+                            {isSubmitted ? (
+                                <div className="py-20 text-center animate-in fade-in zoom-in duration-500">
+                                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                        <span className="material-symbols-outlined text-green-600 text-4xl">check_circle</span>
                                     </div>
-                                    <button
-                                        type="button"
-                                        className="w-full sm:w-auto px-10 sm:px-14 py-4 sm:py-5 bg-slate-900 text-white font-bold text-sm uppercase tracking-widest rounded-full hover:bg-slate-800 transition-all duration-300 shadow-xl shadow-slate-900/20 hover:shadow-2xl hover:scale-[1.02]"
-                                    >
-                                        Submit Inquiry
-                                    </button>
+                                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Inquiry Sent Successfully</h3>
+                                    <p className="text-slate-500">A luxury consultant will reach out to you within 24 hours.</p>
                                 </div>
-                            </form>
+                            ) : (
+                                <form className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                                    <div>
+                                        <label className="block text-[10px] uppercase tracking-[0.2em] text-[#d4af35] font-bold mb-2">Full Name</label>
+                                        <input
+                                            className="w-full bg-white/60 border border-slate-200 rounded-xl py-3 sm:py-4 px-4 text-slate-900 placeholder:text-slate-400 font-light text-sm sm:text-base focus:ring-2 focus:ring-[#d4af35]/20 focus:border-[#d4af35] transition-all"
+                                            placeholder="E.g. Rohan Malhotra"
+                                            type="text"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-[10px] uppercase tracking-[0.2em] text-[#d4af35] font-bold mb-2">Email Address</label>
+                                        <input
+                                            className="w-full bg-white/60 border border-slate-200 rounded-xl py-3 sm:py-4 px-4 text-slate-900 placeholder:text-slate-400 font-light text-sm sm:text-base focus:ring-2 focus:ring-[#d4af35]/20 focus:border-[#d4af35] transition-all"
+                                            placeholder="rohan@private.in"
+                                            type="email"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-[10px] uppercase tracking-[0.2em] text-[#d4af35] font-bold mb-2">Phone</label>
+                                        <input
+                                            className="w-full bg-white/60 border border-slate-200 rounded-xl py-3 sm:py-4 px-4 text-slate-900 placeholder:text-slate-400 font-light text-sm sm:text-base focus:ring-2 focus:ring-[#d4af35]/20 focus:border-[#d4af35] transition-all"
+                                            placeholder="+91 99887 76655"
+                                            type="tel"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-[10px] uppercase tracking-[0.2em] text-[#d4af35] font-bold mb-2">Interest</label>
+                                        <select className="w-full bg-white/60 border border-slate-200 rounded-xl py-3 sm:py-4 px-4 text-slate-500 font-light text-sm sm:text-base focus:ring-2 focus:ring-[#d4af35]/20 focus:border-[#d4af35] transition-all">
+                                            <option>Select a property</option>
+                                            <option>The Altamount Sky Villa (Mumbai)</option>
+                                            <option>The Udaipur Vista (Lake Pichola)</option>
+                                            <option>The Alibaug Sanctuary</option>
+                                            <option>Worli Sea-Link Sanctuary</option>
+                                            <option>Other / General Inquiry</option>
+                                        </select>
+                                    </div>
+                                    <div className="md:col-span-2">
+                                        <label className="block text-[10px] uppercase tracking-[0.2em] text-[#d4af35] font-bold mb-2">Message</label>
+                                        <textarea
+                                            className="w-full bg-white/60 border border-slate-200 rounded-xl py-3 sm:py-4 px-4 text-slate-900 placeholder:text-slate-400 font-light text-sm sm:text-base focus:ring-2 focus:ring-[#d4af35]/20 focus:border-[#d4af35] transition-all resize-none"
+                                            placeholder="Describe your dream residence in India..."
+                                            rows="3"
+                                        />
+                                    </div>
+                                    <div className="md:col-span-2 flex flex-col sm:flex-row items-center justify-between gap-6 pt-2">
+                                        <div className="flex items-center gap-3">
+                                            <span className="material-symbols-outlined text-[#d4af35]">verified_user</span>
+                                            <span className="text-xs text-slate-400 font-light">Discreet & confidential handling guaranteed.</span>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            onClick={handleSubmit}
+                                            className="w-full sm:w-auto px-10 sm:px-14 py-4 sm:py-5 bg-slate-900 text-white font-bold text-sm uppercase tracking-widest rounded-full hover:bg-slate-800 transition-all duration-300 shadow-xl shadow-slate-900/20 hover:shadow-2xl hover:scale-[1.02]"
+                                        >
+                                            Submit Inquiry
+                                        </button>
+                                    </div>
+                                </form>
+                            )}
                         </div>
                     </div>
                 </div>

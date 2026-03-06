@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import GlobalNavbar from "@/components/GlobalNavbar";
 import Hero from "@/components/Hero";
 import EditorialGallery from "@/components/EditorialGallery";
 import Experience from "@/components/Experience";
@@ -10,7 +10,7 @@ import ContactForm from "@/components/ContactForm";
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#F5F5F7]">
-      <Navbar />
+      <GlobalNavbar />
       <Hero />
       <div className="bg-white">
         <EditorialGallery />

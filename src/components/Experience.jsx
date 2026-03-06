@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Button } from "./ui/moving-border";
+import Link from "next/link";
 
 function useFadeIn() {
     const ref = useRef(null);
@@ -21,21 +22,24 @@ const content = [
         cta: "Explore Udaipur",
         text: "Experience the ethereal beauty of Udaipur as the rains transform Lake Pichola into a silver mirror. Our heritage-inspired villas offer a front-row seat to nature's most dramatic seasonal performance.",
         image: "/assets/udaipur_lake_pichola_luxury_villa_view_1772810119505.png",
-        label: "The Lake Palace View, Udaipur"
+        label: "The Lake Palace View, Udaipur",
+        href: "/property/udaipur-vista"
     },
     {
         title: "Urban Solitude",
         cta: "The Mumbai Skies",
         text: "High above the rhythmic chaos of Mumbai, find a silence so profound it feels otherworldly. Our sky villas in Worli and Altamount Road are engineered for absolute stillness and panoramic mastery.",
         image: "/assets/mumbai_sky_villa_worli_view_1772810164219.png",
-        label: "Worli Skyline, Mumbai"
+        label: "Worli Skyline, Mumbai",
+        href: "/property/altamount-sky-villa"
     },
     {
         title: "Tropical Modernism",
         cta: "Coastline Retreats",
         text: "Alibaug is evolving. Beyond the traditional getaway, we are curating modernist sanctuaries that blend raw concrete with lush tropical greenery, creating a new architectural vernacular for the Indian coast.",
         image: "/assets/alibaug_modernist_coastal_villa_1772810141396.png",
-        label: "Coastal Sanctuary, Alibaug"
+        label: "Coastal Sanctuary, Alibaug",
+        href: "/property/alibaug-sanctuary"
     },
 ];
 
@@ -84,24 +88,26 @@ export default function Experience() {
                 <div className="w-full lg:w-1/2 relative lg:static z-20">
                     {content.map((item, index) => (
                         <div key={index} className="lg:min-h-screen py-16 px-4 sm:px-0 lg:py-0 flex flex-col justify-center pr-0 lg:pr-24">
-                            <Button
-                                as={motion.div}
-                                initial={{ opacity: 0.3 }}
-                                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-                                transition={{ duration: 0.5 }}
-                                duration={Math.floor(Math.random() * 2000) + 3000}
-                                borderRadius="1.5rem"
-                                containerClassName="w-full h-auto p-0 mb-8 sm:mb-0 shadow-xl"
-                                className="bg-white/90 backdrop-blur-xl p-8 sm:p-12 flex flex-col justify-start items-start text-left w-full h-full"
-                            >
-                                <div className={`mb-6 h-[2px] w-12 transition-colors duration-500 ${activeCard === index ? 'bg-[#d4af35]' : 'bg-slate-300'}`} />
-                                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-8 text-slate-900">{item.title}</h3>
-                                <p className="text-sm sm:text-lg md:text-xl text-slate-600 font-light leading-relaxed">{item.text}</p>
-                                <div className="mt-8 sm:mt-12 flex items-center gap-4 text-[#d4af35] group cursor-pointer">
-                                    <span className="text-xs sm:text-sm font-bold uppercase tracking-widest">{item.cta}</span>
-                                    <span className="material-symbols-outlined transition-transform group-hover:translate-x-2">arrow_forward</span>
-                                </div>
-                            </Button>
+                            <Link href={item.href} className="block w-full h-auto mb-8 sm:mb-0 shadow-xl rounded-[1.5rem]">
+                                <Button
+                                    as={motion.div}
+                                    initial={{ opacity: 0.3 }}
+                                    animate={{ opacity: activeCard === index ? 1 : 0.3 }}
+                                    transition={{ duration: 0.5 }}
+                                    duration={Math.floor(Math.random() * 2000) + 3000}
+                                    borderRadius="1.5rem"
+                                    containerClassName="w-full h-full p-0"
+                                    className="bg-white/90 backdrop-blur-xl p-8 sm:p-12 flex flex-col justify-start items-start text-left w-full h-full cursor-pointer hover:bg-white transition-colors"
+                                >
+                                    <div className={`mb-6 h-[2px] w-12 transition-colors duration-500 ${activeCard === index ? 'bg-[#d4af35]' : 'bg-slate-300'}`} />
+                                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-8 text-slate-900">{item.title}</h3>
+                                    <p className="text-sm sm:text-lg md:text-xl text-slate-600 font-light leading-relaxed">{item.text}</p>
+                                    <div className="mt-8 sm:mt-12 flex items-center gap-4 text-[#d4af35] group cursor-pointer">
+                                        <span className="text-xs sm:text-sm font-bold uppercase tracking-widest">{item.cta}</span>
+                                        <span className="material-symbols-outlined transition-transform group-hover:translate-x-2">arrow_forward</span>
+                                    </div>
+                                </Button>
+                            </Link>
 
                             {/* Mobile inline image (only visible on small screens) */}
                             <div className="lg:hidden w-full h-64 sm:h-80 rounded-2xl overflow-hidden mt-8 shadow-2xl relative border border-slate-200">

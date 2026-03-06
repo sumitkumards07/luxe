@@ -54,9 +54,9 @@ export default function Hero() {
                         transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
                         className="flex items-center gap-6"
                     >
-                        <button className="px-10 py-5 bg-[#d4af35] text-white rounded-full font-bold text-base uppercase tracking-widest hover:scale-105 hover:bg-[#b8941e] transition-all flex items-center gap-3 shadow-2xl shadow-[#d4af35]/40 active:scale-95">
+                        <a href="#contact" className="px-10 py-5 bg-[#d4af35] text-white rounded-full font-bold text-base uppercase tracking-widest hover:scale-105 hover:bg-[#b8941e] transition-all flex items-center gap-3 shadow-2xl shadow-[#d4af35]/40 active:scale-95">
                             Book a Private Viewing <ArrowUpRight className="w-5 h-5" />
-                        </button>
+                        </a>
                         <div className="hidden sm:flex flex-col">
                             <span className="text-slate-900 font-bold text-sm uppercase tracking-widest">Limited Access</span>
                             <span className="text-slate-500 text-[10px] uppercase tracking-widest">Exclusive to Private Clients</span>

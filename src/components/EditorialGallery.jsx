@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Play } from "lucide-react";
+import Link from "next/link";
 
 export default function EditorialGallery() {
     return (
@@ -22,7 +23,7 @@ export default function EditorialGallery() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
 
                 {/* Featured Property Large */}
-                <div className="md:col-span-8 group cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-700 bg-slate-50 p-4 rounded-[2rem] border border-slate-100">
+                <Link href="/property/udaipur-vista" className="md:col-span-8 group cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-700 bg-slate-50 p-4 rounded-[2rem] border border-slate-100 block">
                     <div className="overflow-hidden rounded-2xl h-[50vh] sm:h-[60vh] md:h-[70vh] relative mb-6">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
@@ -44,10 +45,10 @@ export default function EditorialGallery() {
                         </div>
                         <p className="font-bold tracking-widest text-slate-900 bg-white px-4 py-2 rounded-full border border-slate-100 shadow-sm">₹85 Cr</p>
                     </div>
-                </div>
+                </Link>
 
                 {/* Featured Property Small */}
-                <div className="md:col-span-4 group cursor-pointer mt-8 md:mt-40 shadow-sm hover:shadow-2xl transition-all duration-700 bg-slate-50 p-4 rounded-[2rem] border border-slate-100">
+                <Link href="/property/alibaug-sanctuary" className="md:col-span-4 group cursor-pointer mt-8 md:mt-40 shadow-sm hover:shadow-2xl transition-all duration-700 bg-slate-50 p-4 rounded-[2rem] border border-slate-100 block">
                     <div className="overflow-hidden rounded-2xl h-[40vh] sm:h-[45vh] relative mb-6">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
@@ -63,10 +64,10 @@ export default function EditorialGallery() {
                         </div>
                         <p className="font-bold tracking-widest text-[#d4af35] mt-2">₹42 Cr</p>
                     </div>
-                </div>
+                </Link>
 
                 {/* Third Property Medium (Spanning Full Width below) */}
-                <div className="md:col-span-12 group cursor-pointer mt-8 md:mt-16 flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 shadow-sm hover:shadow-2xl transition-all duration-700 bg-slate-50 p-6 rounded-[3rem] border border-slate-100">
+                <Link href="/property/worli-sky-villa" className="md:col-span-12 group cursor-pointer mt-8 md:mt-16 flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 shadow-sm hover:shadow-2xl transition-all duration-700 bg-slate-50 p-6 rounded-[3rem] border border-slate-100 block">
                     <div className="w-full md:w-7/12 overflow-hidden rounded-2xl h-[40vh] sm:h-[50vh] relative mb-6 md:mb-0 shadow-lg">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
@@ -80,13 +81,13 @@ export default function EditorialGallery() {
                         <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-2">Worli Sea-Link <br /><span className="italic font-serif text-[#d4af35]">Sanctuary</span></h3>
                         <p className="text-slate-500 font-light mt-4 mb-8 leading-relaxed">Perched high above Worli, this architectural marvel completely blurs the lines between interior luxury and the raw power of the Arabian Sea, with a panoramic view of the Bandra-Worli Sea Link.</p>
                         <div className="flex items-center gap-6">
-                            <button className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-[#d4af35] group-hover:text-slate-900 transition-colors">
+                            <div className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-[#d4af35] group-hover:text-slate-900 transition-colors">
                                 Explore Estate <span className="w-8 h-[1px] bg-[#d4af35] group-hover:bg-slate-900 transition-colors" />
-                            </button>
+                            </div>
                             <span className="text-slate-900 font-bold tracking-widest bg-white px-4 py-2 rounded-full border border-slate-100">₹115 Cr</span>
                         </div>
                     </div>
-                </div>
+                </Link>
 
             </div>
         </section>
